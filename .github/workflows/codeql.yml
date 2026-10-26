@@ -24,7 +24,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Inicializar CodeQL
-        uses: github/codeql-action/init@v3
+        uses: github/codeql-action/init@v4
         with:
           languages: javascript-typescript
           # Las queries de seguridad-extendida activan detecciones adicionales
@@ -33,11 +33,11 @@ jobs:
 
       # Para proyectos JS sin compilación, autobuild detecta el código fuente automáticamente
       - name: Autobuilder CodeQL
-        uses: github/codeql-action/autobuild@v3
+        uses: github/codeql-action/autobuild@v4
 
       # Security Gate: si CodeQL encuentra hallazgos, los reporta como alertas en Security tab
       # La integración con Branch Protection se configura como Required Status Check
       - name: Ejecutar análisis CodeQL (Security Gate — SAST)
-        uses: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v4
         with:
           category: /language:javascript-typescript
